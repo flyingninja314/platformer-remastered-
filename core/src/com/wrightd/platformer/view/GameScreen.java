@@ -16,6 +16,7 @@ public class GameScreen implements Screen {
         map = new TmxMapLoader().load("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
         camera = new OrthographicCamera(14f, 14f);
+        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
     }
 
     @Override
