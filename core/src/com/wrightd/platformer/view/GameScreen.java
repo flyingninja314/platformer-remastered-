@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -15,7 +16,7 @@ public class GameScreen implements Screen {
     public OrthogonalTiledMapRenderer renderer;
     public OrthographicCamera camera;
 
-    public SpriteBatch spriteBatch;
+    public Batch spriteBatch;
     public Player player;
 
     public GameScreen() {
@@ -28,7 +29,7 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera(14f, 14f * (height / width));
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
 
-        new SpriteBatch();
+        spriteBatch = renderer.getSpriteBatch();
         player = new Player();
     }
 

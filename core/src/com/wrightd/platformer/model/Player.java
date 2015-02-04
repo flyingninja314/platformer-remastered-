@@ -12,7 +12,7 @@ public class Player {
     public TextureRegion[] spriteFrames;
 
     public Player() {
-        position = new Vector2(0, 0);
+        position = new Vector2(2, 0);
         spriteSheet = new Texture(Gdx.files.internal("img/aliens.png"));
 
         TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, 70, 100);
@@ -35,7 +35,7 @@ public class Player {
     }
 
     public void draw(Batch spriteBatch) {
-        spriteBatch.draw(spriteSheet[34], 0, 0, 70, 100);
+        spriteBatch.draw(spriteSheet[34], position.x, position.y, 70 * (1/70f), 100 * (1/70f));
     }
 
     public void update(float deltaTime) {
