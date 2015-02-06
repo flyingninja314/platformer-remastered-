@@ -10,8 +10,8 @@ public class Spritesheet {
     public TextureRegion[] spriteFrames;
     public Animation animation;
 
-    public Spritesheet() {
-        spriteSheet = new Texture(Gdx.files.internal("img/aliens.png"));
+    public Spritesheet(String pathToFile) {
+        spriteSheet = new Texture(Gdx.files.internal(pathToFile));
 
         TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, 70, 100);
 
