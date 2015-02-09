@@ -10,10 +10,10 @@ public class Spritesheet {
     public TextureRegion[] spriteFrames;
     public Animation animation;
 
-    public Spritesheet(String pathToFile) {
+    public Spritesheet(String pathToFile, int width, int height) {
         spriteSheet = new Texture(Gdx.files.internal(pathToFile));
 
-        TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, 70, 100);
+        TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, width, height);
 
         int counter = 0;
         for(int row = 0; row < spriteSheetFrames.length; row++) {
