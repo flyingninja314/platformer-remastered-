@@ -38,7 +38,7 @@ public class Spritesheet {
         TextureRegion[] animationFrames = new TextureRegion[counter];
 
         for(int index = lastFrame; index >= startFrame; index--) {
-            animationFrames[counter] = spriteFrames[index];
+            animationFrames[--counter] = spriteFrames[index];
         }
 
         animation = new Animation(animationSpeed, animationFrames);
