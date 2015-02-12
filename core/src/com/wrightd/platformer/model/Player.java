@@ -22,8 +22,20 @@ public class Player {
         spriteSheet = new Spritesheet("img/aliens.png", width, height);
         animations = new HashMap<String, Animation>();
 
-        animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.125f));
+        animations.put("walkRight", spriteSheet.createAnimation(31, 32, 0.125f));
         animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
+        animations.put("jumpRight", spriteSheet.createAnimation(27, 27, 0.125f));
+        animations.put("jumpLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
+        animations.put("duckRight", spriteSheet.createAnimation(25, 25, 0.125f));
+        animations.put("duckLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
+        animations.put("hurtRight", spriteSheet.createAnimation(26, 26, 0.125f));
+        animations.put("hurtLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
+        animations.put("idleRight", spriteSheet.createAnimation(28, 28, 0.125f));
+        animations.put("idleLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
+        animations.put("swimRight", spriteSheet.createAnimation(29, 30, 0.125f));
+        animations.put("swimLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
+        animations.put("climb", spriteSheet.createAnimation(23, 24, 0.125f));
+        animations.put("stand", spriteSheet.createAnimation(22, 22, 0.125f));
         currentAnimation = "walkRight";
         stateTime = 0f;
     }
