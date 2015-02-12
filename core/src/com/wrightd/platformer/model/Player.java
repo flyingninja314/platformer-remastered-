@@ -45,7 +45,7 @@ public class Player {
     }
 
     public void update(float deltaTime) {
-        position.x += deltaTime;
+//        position.x += deltaTime;
         stateTime += deltaTime;
     }
 }
