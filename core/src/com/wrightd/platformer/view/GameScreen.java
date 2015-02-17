@@ -37,7 +37,7 @@ public class GameScreen implements Screen {
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
 
         spriteBatch = renderer.getSpriteBatch();
-        player = new Player();
+        player = new Player(70, 100);
     }
 
     @Override
