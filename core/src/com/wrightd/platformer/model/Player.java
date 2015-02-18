@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.wrightd.platformer.view.GameScreen;
+import com.wrightd.platformer.controller.LevelController;
 
 import java.util.HashMap;
 
@@ -22,8 +22,8 @@ public class Player {
 
     public Player(int width, int height) {
         position = new Vector2(0, 2);
-        this.width = width * (1/70f);
-        this.height = height * (1/70f);
+        this.width = width * (LevelController.UNIT_SCALE);
+        this.height = height * (LevelController.UNIT_SCALE);
         spriteSheet = new Spritesheet("img/aliens.png", width, height);
         animations = new HashMap<String, Animation>();
 
@@ -31,7 +31,7 @@ public class Player {
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
 
-        Body playerBody = GameScreen.gameWorld.createBody(bodyDefinition);
+        Body playerBody = LevelController.gameWorld.createBody(bodyDefinition);
         playerBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();

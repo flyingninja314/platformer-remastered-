@@ -3,20 +3,16 @@ package com.wrightd.platformer.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.wrightd.platformer.controller.CameraController;
 import com.wrightd.platformer.controller.LevelController;
-import com.wrightd.platformer.model.Player;
+import com.wrightd.platformer.controller.PlayerController;
 
 public class GameScreen implements Screen {
-
-   public Player player;
 
     public GameScreen() {
         LevelController.initializeController();
         CameraController.initializeController();
-
-        player = new Player(70, 100);
+        PlayerController.initializeController();
     }
 
     @Override
@@ -26,8 +22,7 @@ public class GameScreen implements Screen {
 
         CameraController.update();
         LevelController.update(delta);
-
-        player.update(delta);
+        PlayerController.update(delta);
 
         LevelController.draw();
     }
