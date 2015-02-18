@@ -32,12 +32,12 @@ public class LevelController {
         spriteBatch.begin();
         player.draw(spriteBatch);
         spriteBatch.end();
-        debugRenderer.render(gameWorld, camera.combined);
+        debugRenderer.render(gameWorld, CameraController.camera.combined);
     }
 
     public static void update(float deltaTime) {
 
-        renderer.setView(camera);
+        renderer.setView(CameraController.camera);
         renderer.render();
 
     }
