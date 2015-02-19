@@ -43,6 +43,9 @@ public class LevelController {
         spriteBatch.begin();
         PlayerController.draw(spriteBatch);
         spriteBatch.end();
+
+        InputController.draw(spriteBatch);
+
         debugRenderer.render(gameWorld, CameraController.camera.combined);
     }
 

@@ -3,6 +3,7 @@ package com.wrightd.platformer.model;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.wrightd.platformer.controller.LevelController;
 
 public class InputControl {
     public String action;
@@ -22,6 +23,6 @@ public class InputControl {
     }
 
     public void draw(Batch spriteBatch) {
-        spriteBatch.draw(textureRegion, position.x, position.y, width,, height);
+        spriteBatch.draw(textureRegion, position.x, position.y, width * LevelController.UNIT_SCALE, height * LevelController.UNIT_SCALE);
     }
 }
