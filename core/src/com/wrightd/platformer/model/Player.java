@@ -2,7 +2,6 @@ package com.wrightd.platformer.model;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
@@ -16,8 +15,8 @@ public class Player extends Sprite{
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
 
-        Body playerBody = LevelController.gameWorld.createBody(bodyDefinition);
-        playerBody.setUserData(this);
+        physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
+        physicsBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();
         rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0);
@@ -25,7 +24,7 @@ public class Player extends Sprite{
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
 
-        playerBody.createFixture(fixtureDefinition);
+        physicsBody.createFixture(fixtureDefinition);
         rectangleShape.dispose();
 
         animations.put("walkRight", spriteSheet.createAnimation(31, 32, 0.125f));

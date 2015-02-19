@@ -33,7 +33,6 @@ public class LevelController {
         debugRenderer = new Box2DDebugRenderer();
 
         spriteBatch = renderer.getSpriteBatch();
-
     }
 
     public static void draw() {
