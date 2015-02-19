@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.wrightd.platformer.model.Level;
 import com.wrightd.platformer.model.Player;
+import com.wrightd.platformer.model.Sprite;
 
 public class LevelController {
     public static final float UNIT_SCALE = 1/70f;
@@ -55,7 +56,7 @@ public class LevelController {
         gameWorld.getBodies(worldBodies);
 
         for(Body body : worldBodies) {
-            Player playerBody = (Player)body.getUserData();
+            Sprite playerBody = (Sprite)body.getUserData();
             playerBody.position = body.getPosition();
         }
     }

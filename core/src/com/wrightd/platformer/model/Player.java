@@ -1,6 +1,5 @@
 package com.wrightd.platformer.model;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -9,24 +8,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.wrightd.platformer.controller.LevelController;
 
-import java.util.HashMap;
+public class Player extends Sprite{
 
-public class Player {
-    public Vector2 position;
-    public Spritesheet spriteSheet;
-    public float width;
-    public float height;
-    public String currentAnimation;
-    private float stateTime;
-    private HashMap<String, Animation> animations;
-
-    public Player(int width, int height) {
-        position = new Vector2(0, 2);
-        this.width = width * (LevelController.UNIT_SCALE);
-        this.height = height * (LevelController.UNIT_SCALE);
-        spriteSheet = new Spritesheet("img/aliens.png", width, height);
-        animations = new HashMap<String, Animation>();
-
+    public Player(Vector2 position, int width, int height) {
+        super(position, width, height);
         BodyDef bodyDefinition = new BodyDef();
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
@@ -66,15 +51,13 @@ public class Player {
         animations.put("stand", spriteSheet.createAnimation(22, 22, 0.125f));
 
         currentAnimation = "walkRight";
-        stateTime = 0f;
     }
 
     public void draw(Batch spriteBatch) {
-        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);
+        super.draw(spriteBatch);
     }
 
     public void update(float deltaTime) {
-//        position.x += deltaTime;
-        stateTime += deltaTime;
+        super.update(deltaTime);
     }
 }
