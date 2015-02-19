@@ -63,7 +63,6 @@ public class LevelController {
 
             if(spriteBody != null) {
                 spriteBody.position = body.getPosition();
-//                video 45 was fixing some problem i had already resolved. i think oyu made these videos out of order because you had the correct code in an earlier video and then reverted in 45
             }
         }
     }
