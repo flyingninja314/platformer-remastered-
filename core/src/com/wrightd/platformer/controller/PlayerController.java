@@ -1,5 +1,6 @@
 package com.wrightd.platformer.controller;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.wrightd.platformer.model.Player;
 
@@ -12,5 +13,9 @@ public class PlayerController {
 
     public static void update(float deltaTime){
         player.update(deltaTime);
+    }
+
+    public static void draw(Batch spriteBatch) {
+        player.draw(spriteBatch);
     }
 }

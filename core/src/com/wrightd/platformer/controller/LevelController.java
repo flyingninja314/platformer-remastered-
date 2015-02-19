@@ -28,7 +28,7 @@ public class LevelController {
         level = new Level("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE);
         worldBodies = new Array<Body>();
-        gameWorld = new World(new Vector2(0, -10), true);
+        gameWorld = new World(new Vector2(0, 0), true);
 
         debugRenderer = new Box2DDebugRenderer();
 
@@ -38,7 +38,7 @@ public class LevelController {
 
     public static void draw() {
         spriteBatch.begin();
-        PlayerController.player.draw(spriteBatch);
+        PlayerController.draw(spriteBatch);
         spriteBatch.end();
         debugRenderer.render(gameWorld, CameraController.camera.combined);
     }
@@ -56,8 +56,11 @@ public class LevelController {
         gameWorld.getBodies(worldBodies);
 
         for(Body body : worldBodies) {
-            Sprite playerBody = (Sprite)body.getUserData();
-            playerBody.position = body.getPosition();
+            Sprite spriteBody = (Sprite)body.getUserData();
+
+            if(spriteBody != null) {
+                spriteBody.position = body.getPosition();
+            }
         }
     }
 }
