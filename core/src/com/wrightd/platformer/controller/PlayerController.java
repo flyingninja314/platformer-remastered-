@@ -9,8 +9,8 @@ import com.wrightd.platformer.model.Player;
 public class PlayerController {
     public static Player player;
 
-    private static final float VELOCITY = 1f;
-    private static final float MAX_VELOCITY = 1f;
+    private static final float VELOCITY = 2f;
+    private static final float MAX_VELOCITY = 2f;
 
     public static void initializeController() {
         player = new Player(new Vector2(0, 2), 70, 100);

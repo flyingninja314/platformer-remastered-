@@ -1,6 +1,7 @@
 package com.wrightd.platformer.model;
 
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -29,6 +30,29 @@ public class Bodies {
 
             physicsBody.createFixture(fixtureDefinition);
             rectangleShape.dispose();
+        }
+        else if(bodyType .equalsIgnoreCase("slope")) {
+            PolygonMapObject polygonObject = (PolygonMapObject)mapObject;
+            BodyDef bodyDefinition = new BodyDef();
+            bodyDefinition.type = BodyDef.BodyType.StaticBody;
+            bodyDefinition.position.set(polygonObject.getPolygon().getX() * LevelController.UNIT_SCALE, polygonObject.getPolygon().getY() *LevelController.UNIT_SCALE);
+
+            Body physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
+            PolygonShape slopeShape = new PolygonShape();
+
+            float[] transformedVertices = new float[6];
+
+            for(int index = 0; index < transformedVertices.length; index++) {
+                transformedVertices[index] = polygonObject.getPolygon().getVertices()[index] * LevelController.UNIT_SCALE;
+            }
+
+            slopeShape.set(transformedVertices);
+
+            FixtureDef fixtureDefinition = new FixtureDef();
+            fixtureDefinition.shape = slopeShape;
+
+            physicsBody.createFixture(fixtureDefinition);
+            slopeShape.dispose();
         }
     }
 }
