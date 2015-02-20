@@ -1,7 +1,5 @@
 package com.wrightd.platformer.controller;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.wrightd.platformer.model.Player;
@@ -13,6 +11,7 @@ public class PlayerController {
 
     private static final float VELOCITY = 2f;
     private static final float MAX_VELOCITY = 2f;
+    private static final float JUMP_VELOCITY = .5f;
 
     public static void initializeController() {
         player = new Player(new Vector2(0, 2), 70, 100, "img/aliens.png");
@@ -41,9 +40,17 @@ public class PlayerController {
         if(movementAction .equalsIgnoreCase("right")) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0, position.x, position.y, true);
         }
-
         else if(movementAction .equalsIgnoreCase("left")) {
             player.physicsBody.applyLinearImpulse(-VELOCITY, 0, position.x, position.y, true);
+        }
+        else if(movementAction .equalsIgnoreCase("jump")){
+            player.physicsBody.applyLinearImpulse(0, JUMP_VELOCITY, position.x, position.y, true);
+        }
+        else if(movementAction .equalsIgnoreCase("rightJump")) {
+            player.physicsBody.applyLinearImpulse(VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
+        }
+        else if(movementAction .equalsIgnoreCase("leftJump")) {
+            player.physicsBody.applyLinearImpulse(-VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
         }
     }
 }

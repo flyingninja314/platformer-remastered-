@@ -44,10 +44,22 @@ public class InputController {
             public boolean keyDown(int keycode) {
                 if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                     PlayerController.movementAction = "right";
+                    if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+                        PlayerController.movementAction = "rightJump";
+                        return true;
+                    }
                     return true;
                 }
                 else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                     PlayerController.movementAction = "left";
+                    if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+                        PlayerController.movementAction = "rightJump";
+                        return true;
+                    }
+                    return true;
+                }
+                else if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+                    PlayerController.movementAction = "jump";
                     return true;
                 }
                 return true;
