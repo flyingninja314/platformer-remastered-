@@ -14,6 +14,7 @@ public class CameraController {
     }
 
     public static void update() {
+        camera.position.set(PlayerController.player.position.x, PlayerController.player.position.y, 0);
         camera.update();
     }
 
