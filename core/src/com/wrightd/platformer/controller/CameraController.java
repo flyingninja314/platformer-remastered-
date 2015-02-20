@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class CameraController {
     public static OrthographicCamera camera;
+    public static OrthographicCamera inputCamera;
 
     public static void initializeController() {
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
         camera = new OrthographicCamera(14f, 14f * (height / width));
-        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
+        inputCamera = new OrthographicCamera(14f, 14f * (height / width));
+        inputCamera.position.set(inputCamera.viewportWidth / 2f, inputCamera.viewportHeight / 2f, 0);
+        inputCamera.update();
     }
 
     public static void update() {
@@ -22,5 +25,10 @@ public class CameraController {
         camera.viewportWidth = 14f;
         camera.viewportHeight = 14f * height / width;
         camera.update();
+
+        inputCamera.viewportWidth = 14f;
+        inputCamera.viewportHeight = 14f * height / width;
+        inputCamera.position.set(inputCamera.viewportWidth / 2f, inputCamera.viewportHeight / 2f, 0);
+        inputCamera.update();
     }
 }

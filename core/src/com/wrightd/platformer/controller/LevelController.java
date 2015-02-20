@@ -40,10 +40,12 @@ public class LevelController {
     }
 
     public static void draw() {
+        spriteBatch.setProjectionMatrix(CameraController.camera.combined);
         spriteBatch.begin();
         PlayerController.draw(spriteBatch);
         spriteBatch.end();
 
+        spriteBatch.setProjectionMatrix(CameraController.inputCamera.combined);
         InputController.draw(spriteBatch);
 
         debugRenderer.render(gameWorld, CameraController.camera.combined);
