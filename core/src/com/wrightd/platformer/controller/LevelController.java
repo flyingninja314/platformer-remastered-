@@ -10,8 +10,8 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.wrightd.platformer.model.Bodies;
+import com.wrightd.platformer.model.CollisionListener;
 import com.wrightd.platformer.model.Level;
-import com.wrightd.platformer.model.Player;
 import com.wrightd.platformer.model.Sprite;
 
 public class LevelController {
@@ -30,8 +30,10 @@ public class LevelController {
     public static void initializeController() {
         level = new Level("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE);
+
         worldBodies = new Array<Body>();
         gameWorld = new World(new Vector2(0, -10), true);
+        gameWorld.setContactListener(new CollisionListener());
 
         debugRenderer = new Box2DDebugRenderer();
 
