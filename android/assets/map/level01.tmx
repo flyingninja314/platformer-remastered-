@@ -20,23 +20,8 @@
   </data>
  </layer>
  <objectgroup color="#ff0000" name="collision" width="20" height="10">
-  <object name="ground" type="solid" x="0" y="560" width="490" height="140"/>
-  <object name="ground" type="solid" x="280" y="490" width="210" height="70"/>
-  <object name="ground" type="solid" x="490" y="630" width="700" height="70"/>
-  <object name="ground" type="solid" x="1120" y="420" width="70" height="70"/>
-  <object name="ground" type="solid" x="1050" y="490" width="140" height="140"/>
-  <object name="ground" type="solid" x="980" y="560" width="70" height="70"/>
-  <object name="ground" type="slope" x="910" y="630">
-   <polygon points="0,0 70,-70 70,0 0,0"/>
-  </object>
-  <object name="ground" type="slope" x="210" y="560">
-   <polygon points="0,0 70,-70 70,0 0,0"/>
-  </object>
-  <object name="ground" type="slope" x="980" y="560">
-   <polygon points="0,0 70,-70 70,0 0,0"/>
-  </object>
-  <object name="ground" type="slope" x="1050" y="490">
-   <polygon points="0,0 70,-70 70,0 0,0"/>
+  <object name="ground" type="ground" x="0" y="560">
+   <polyline points="0,0 210,0 280,-70 490,-70 490,70 910,70 1120,-140 1190,-140 1190,140 1400,140 1400,-560 0,-560 0,0"/>
   </object>
  </objectgroup>
 </map>
