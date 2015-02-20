@@ -18,42 +18,26 @@ public class Bodies {
         String bodyType = mapObject.getProperties().get("type").toString();
 
         if(bodyType .equalsIgnoreCase("ground")) {
-            PolylineMapObject polylineMapObject = (PolylineMapObject)mapObject;
+            PolylineMapObject polylineObject = (PolylineMapObject)mapObject;
             BodyDef bodyDefinition = new BodyDef();
             bodyDefinition.type = BodyDef.BodyType.StaticBody;
-            bodyDefinition.position.set(polylineMapObject.getPolyline().getX() * LevelController.UNIT_SCALE, polylineMapObject.getPolyline().getY() * LevelController.UNIT_SCALE);
+            bodyDefinition.position.set(polylineObject.getPolyline().getX() * LevelController.UNIT_SCALE, polylineObject.getPolyline().getY() * LevelController.UNIT_SCALE);
 
             Body physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
             ChainShape chainShape = new ChainShape();
+            float[] transformedVertices = new float[polylineObject.getPolyline().getVertices().length];
+
+            for(int index = 0; index < transformedVertices.length; index++) {
+                transformedVertices[index] = polylineObject.getPolyline().getVertices()[index] * LevelController.UNIT_SCALE;
+            }
+
+            chainShape.createChain(transformedVertices);
 
             FixtureDef fixtureDefinition = new FixtureDef();
             fixtureDefinition.shape = chainShape;
 
             physicsBody.createFixture(fixtureDefinition);
             chainShape.dispose();
-        }
-        else if(bodyType .equalsIgnoreCase("slope")) {
-            PolygonMapObject polygonObject = (PolygonMapObject)mapObject;
-            BodyDef bodyDefinition = new BodyDef();
-            bodyDefinition.type = BodyDef.BodyType.StaticBody;
-            bodyDefinition.position.set(polygonObject.getPolygon().getX() * LevelController.UNIT_SCALE, polygonObject.getPolygon().getY() *LevelController.UNIT_SCALE);
-
-            Body physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
-            PolygonShape slopeShape = new PolygonShape();
-
-            float[] transformedVertices = new float[6];
-
-            for(int index = 0; index < transformedVertices.length; index++) {
-                transformedVertices[index] = polygonObject.getPolygon().getVertices()[index] * LevelController.UNIT_SCALE;
-            }
-
-            slopeShape.set(transformedVertices);
-
-            FixtureDef fixtureDefinition = new FixtureDef();
-            fixtureDefinition.shape = slopeShape;
-
-            physicsBody.createFixture(fixtureDefinition);
-            slopeShape.dispose();
         }
     }
 }
