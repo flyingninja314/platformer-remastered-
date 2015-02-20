@@ -1,6 +1,7 @@
 package com.wrightd.platformer.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -39,6 +40,26 @@ public class InputController {
                 return true;
             }
 
+            @Override
+            public boolean keyDown(int keycode) {
+                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+                    PlayerController.movementAction = "right";
+                    return true;
+                }
+                else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+                    PlayerController.movementAction = "left";
+                    return true;
+                }
+                return true;
+            }
+
+
+            @Override
+            public boolean keyUp(int keycode) {
+                    PlayerController.movementAction = "";
+                return true;
+            }
         };
+
     }
 }
