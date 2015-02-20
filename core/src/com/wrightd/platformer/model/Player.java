@@ -19,13 +19,22 @@ public class Player extends Sprite{
         physicsBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();
-        rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0);
+        rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0f);
+
+        PolygonShape sensorShape = new PolygonShape();
+        sensorShape.setAsBox(this.width / 2.2f, this.height / 32f, new Vector2(this.width / 2f, 0), 0f);
 
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
 
+        FixtureDef fixtureDefinitionSensor = new FixtureDef();
+        fixtureDefinitionSensor.shape = sensorShape;
+        fixtureDefinitionSensor.isSensor = true;
+
         physicsBody.createFixture(fixtureDefinition);
+        physicsBody.createFixture(fixtureDefinitionSensor);
         rectangleShape.dispose();
+        sensorShape.dispose();
 
         animations.put("walkRight", spriteSheet.createAnimation(31, 32, 0.125f));
         animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
