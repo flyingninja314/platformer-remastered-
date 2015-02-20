@@ -8,12 +8,16 @@ import com.wrightd.platformer.model.Player;
 
 public class PlayerController {
     public static Player player;
+    public static String movementAction;
+    public static String specialAction;
 
     private static final float VELOCITY = 2f;
     private static final float MAX_VELOCITY = 2f;
 
     public static void initializeController() {
-            player = new Player(new Vector2(0, 2), 70, 100, "img/aliens.png");
+        player = new Player(new Vector2(0, 2), 70, 100, "img/aliens.png");
+        movementAction = "";
+        specialAction = "";
     }
 
     public static void update(float deltaTime){
@@ -34,11 +38,11 @@ public class PlayerController {
             player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if(movementAction .equalsIgnoreCase("right")) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0, position.x, position.y, true);
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        else if(movementAction .equalsIgnoreCase("left")) {
             player.physicsBody.applyLinearImpulse(-VELOCITY, 0, position.x, position.y, true);
         }
     }
