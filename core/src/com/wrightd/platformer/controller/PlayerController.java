@@ -9,6 +9,8 @@ public class PlayerController {
     public static String movementAction;
     public static String specialAction;
 
+    public static boolean grounded;
+
     private static final float VELOCITY = 2f;
     private static final float MAX_VELOCITY = 2f;
     private static final float JUMP_VELOCITY = .5f;
@@ -43,14 +45,21 @@ public class PlayerController {
         else if(movementAction .equalsIgnoreCase("left")) {
             player.physicsBody.applyLinearImpulse(-VELOCITY, 0, position.x, position.y, true);
         }
-        else if(movementAction .equalsIgnoreCase("jump")){
-            player.physicsBody.applyLinearImpulse(0, JUMP_VELOCITY, position.x, position.y, true);
+
+        if(movementAction .equalsIgnoreCase("jump")){
+            if(grounded) {
+                player.physicsBody.applyLinearImpulse(0, JUMP_VELOCITY, position.x, position.y, true);
+            }
         }
         else if(movementAction .equalsIgnoreCase("rightJump")) {
-            player.physicsBody.applyLinearImpulse(VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
+            if(grounded) {
+                player.physicsBody.applyLinearImpulse(VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
+            }
         }
         else if(movementAction .equalsIgnoreCase("leftJump")) {
-            player.physicsBody.applyLinearImpulse(-VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
+            if(grounded) {
+                player.physicsBody.applyLinearImpulse(-VELOCITY, JUMP_VELOCITY, position.x, position.y, true);
+            }
         }
     }
 }

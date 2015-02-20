@@ -16,6 +16,10 @@ public class CameraController {
         camera = new OrthographicCamera(14f, 14f * (height / width));
         inputCamera = new OrthographicCamera(14f, 14f * (height / width));
         inputCamera.position.set(inputCamera.viewportWidth / 2f, inputCamera.viewportHeight / 2f, 0);
+//          camera view is like a graph, so without setting camera position, the map appears in the 1st quadrant of a 4 quadrant graph (       |  x    ) and this line fixes it so that the map is on the whole screen
+//                                                                                                                                     (-------|-------)
+//                                                                                                                                     (       |       )
+
         inputCamera.update();
     }
 

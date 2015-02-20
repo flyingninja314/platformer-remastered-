@@ -30,6 +30,7 @@ public class LevelController {
     public static void initializeController() {
         level = new Level("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE);
+//        tells program the size of a tile ===> f stands for floating decimal number
 
         worldBodies = new Array<Body>();
         gameWorld = new World(new Vector2(0, -10), true);
